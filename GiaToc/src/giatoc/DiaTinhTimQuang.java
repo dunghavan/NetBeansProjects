@@ -17,24 +17,24 @@ public class DiaTinhTimQuang extends GiaToc{
         boolean exit = false;
         Scanner scan = new Scanner(System.in);
         do{
-            System.out.print("Nhap loai quang tim duoc, hay nhap so tuong ung: (1)Bich Ngoc, (2)Lam Ngoc, (3)Hong Ngoc, (4)Nhan Sam, (0)Ket Thuc Viec Nhap");
+            System.out.print("Nhap loai quang tim duoc, hay nhap so tuong ung: (1)Bich Ngoc, (2)Lam Ngoc, (3)Hong Ngoc, (4)Kim Cuong, (0)Ket Thuc Viec Nhap...");
             loai = Integer.parseInt(scan.nextLine());  
             switch(loai)
             {
                 case 1: {
-                        System.out.print("Nhap so luong Linh Chi: ");
+                        System.out.print("Nhap so luong Bich Ngoc: ");
                         slBichNgoc += Integer.parseInt(scan.nextLine());
                         break;}
                 case 2: {
-                        System.out.print("Nhap so luong Ha Thu O: ");
+                        System.out.print("Nhap so luong Lam Ngoc: ");
                         slLamNgoc += Integer.parseInt(scan.nextLine());
                         break;}
                 case 3: {
-                        System.out.print("Nhap so luong Nhan Sam: ");
+                        System.out.print("Nhap so luong Hong Ngoc: ");
                         slHongNgoc += Integer.parseInt(scan.nextLine());
                         break;}
                 case 4: {
-                        System.out.print("Nhap so luong That Tam Lien: ");
+                        System.out.print("Nhap so luong Kim Cuong: ");
                         slKimCuong += Integer.parseInt(scan.nextLine());
                         break;}
                 case 0: exit = true;

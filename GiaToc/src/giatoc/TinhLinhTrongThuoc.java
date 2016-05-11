@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class TinhLinhTrongThuoc extends GiaToc{
     private int slCayTrong;
+    @Override
     public void Nhap(){
         super.Nhap();
         chungtoc = "Tinh Linh";
@@ -16,29 +17,23 @@ public class TinhLinhTrongThuoc extends GiaToc{
                 System.out.print("So luong khong hop le! Nhap lai: ");
         } while(slCayTrong < 0);
     }
+    @Override
     public void Xuat(){
         TinhTienThuong();
-        TinhTongCuBet();
+        TinhCuBet();
+        TinhTienThuong();
         super.Xuat();
-        System.out.print("  Chung toc: " + chungtoc + "  |Nghe nghiep: " + nghenghiep);
+        System.out.print("  |Chung toc: " + chungtoc + "  |Nghe nghiep: " + nghenghiep);
         System.out.print("\nThanh qua lao dong: trong duoc " + slCayTrong + " cay thuoc");
-        System.out.print("\nCubet: " + cubet + ", Diem cong hien: " + diemconghien + ", Tien thuong: " + tienthuong + ", Tong cong: " + (cubet + tienthuong));
-        System.out.print("\n-------------------------------------------------------------\n");
+        System.out.print("\nCubet: " + cubet + ", Diem cong hien: " + diemconghien + ", Tien thuong: " + tienthuong + ", Tong cong: " + tientongcong);
+        System.out.print("\n-------------------------------------------------------------------------");
     }
     @Override
     protected void TinhDiemCH(){
         diemconghien = slCayTrong * 1;
     }
     @Override
-    protected void TinhTienThuong(){
-        TinhDiemCH();
-        if(diemconghien >= 3000)
-            tienthuong = 600;
-        if(diemconghien > 2000 && diemconghien < 3000)
-            tienthuong = 300;
-    }
-    @Override
-    protected void TinhTongCuBet(){
+    protected void TinhCuBet(){
         cubet = slCayTrong * 1 + tienthuong;
     }
 }

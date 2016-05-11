@@ -23,37 +23,38 @@ public class DiaTinhTinhCheDo extends GiaToc{
             loai = Integer.parseInt(scan.nextLine());  
             switch(loai)
             {
-                case 1: {
-                        System.out.print("Nhap so luong Linh Chi: ");
+                case 1:
+                        System.out.print("Nhap so luong Cong Cu SX: ");
                         slCongCuSX += Integer.parseInt(scan.nextLine());
-                        break;}
-                case 2: {
-                        System.out.print("Nhap so luong Ha Thu O: ");
+                        break;
+                case 2:
+                        System.out.print("Nhap so luong Vu Khi: ");
                         slVuKhi += Integer.parseInt(scan.nextLine());
-                        break;}
-                case 3: {
-                        System.out.print("Nhap so luong Nhan Sam: ");
+                        break;
+                case 3:
+                        System.out.print("Nhap so luong Ao Giap: ");
                         slAoGiap += Integer.parseInt(scan.nextLine());
-                        break;}
+                        break;
                 case 0: exit = true;
             }
            } while(exit == false);
    }
    public void Xuat(){
         TinhDiemCH();
-        TinhTongCuBet();
+        TinhCuBet();
+        TinhTienThuong();
         super.Xuat();
-        System.out.print("  Chung toc: " + chungtoc + "  |Nghe nghiep: " + nghenghiep);
+        System.out.print("  |Chung toc: " + chungtoc + "  |Nghe nghiep: " + nghenghiep);
         System.out.print("\nThanh qua lao dong: Cong cu SX x" + slCongCuSX + ", Vu khi x" + slVuKhi + ", Ao giap x" + slAoGiap);
-        System.out.print("\nCubet: " + cubet + ", Diem cong hien: " + diemconghien + ", Tien thuong: " + tienthuong + ", Tong cong: " + (cubet + tienthuong));
-        System.out.print("\n-------------------------------------------------------------\n");
+        System.out.print("\nCubet: " + cubet + ", Diem cong hien: " + diemconghien + ", Tien thuong: " + tienthuong + ", Tong cong: " + tientongcong);
+        System.out.print("\n-------------------------------------------------------------------------");
     }
    @Override
     protected void TinhDiemCH(){
         diemconghien = slCongCuSX * 1 + slVuKhi * 2 + slAoGiap * 3;
     }
     @Override
-    protected void TinhTongCuBet(){
+    protected void TinhCuBet(){
         TinhTienThuong();
          cubet = slCongCuSX * 1 + slVuKhi * 2 + slAoGiap * 3 + tienthuong;
     }

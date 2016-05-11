@@ -11,8 +11,9 @@ public abstract class GiaToc {
     protected  String nghenghiep;
     
     protected int diemconghien;
-    protected  int cubet;
+    protected int cubet;
     protected int tienthuong;
+    protected int tientongcong;
     
     protected void Nhap(){
         Scanner scan = new Scanner(System.in);
@@ -26,7 +27,7 @@ public abstract class GiaToc {
         ngaysinh = scan.nextLine();
     }
     protected void Xuat(){
-        System.out.print("Ma TV: " + mathanhvien);
+        System.out.print("  |Ma TV: " + mathanhvien);
         System.out.print("  |Ho ten: " + hoten);
         System.out.print("  |Gioi tinh: " + gioitinh);
         System.out.print("  |Ngay sinh: " + ngaysinh);
@@ -37,6 +38,7 @@ public abstract class GiaToc {
             tienthuong = 600;
         if(diemconghien > 2000 && diemconghien < 3000)
             tienthuong = 300;
+        tientongcong = cubet + tienthuong;
     };
-    abstract void TinhTongCuBet();
+    abstract void TinhCuBet();
 }

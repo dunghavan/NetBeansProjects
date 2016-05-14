@@ -9,19 +9,20 @@ public class main {
         int loaichungtoc;
         int loainghengiep;
         boolean exit = false;
-        boolean exit2 = false;
+        boolean exit2;
         boolean chen = false;
         GiaToc tv;
         Scanner scan = new Scanner(System.in);
         do
         {
-            System.out.print("---------------------------------------------------");
+            System.out.print("---------------------------------------------------\n");
             System.out.print("Ban muon nhap thanh vien loai nao? (1)Tinh Linh, (2)Dia Tinh, (3)Nguoi, (0)Ket thuc viec nhap: ");
             loaichungtoc = Integer.parseInt(scan.nextLine());
             switch(loaichungtoc)
             {
                 case 1: do
-                        {
+                        {   
+                            exit2 = false;
                             System.out.print("Tinh linh thuoc loai nao? (1)Tim Thuoc, (2)Trong Thuoc: ");
                             loainghengiep = Integer.parseInt(scan.nextLine());
                             if(loainghengiep == 1){
@@ -31,15 +32,19 @@ public class main {
                                 tv.TinhDiemCH();
                                 tv.TinhCuBet();
                                 tv.TinhTienThuong();
-                                for(int i = List.size() - 1; i > 0; i--)
-                                    if(tv.tientongcong <= List.get(i - 1).tientongcong)
-                                    {
-                                        List.add(i, tv);
-                                        chen = true;
-                                        break;
-                                    }
+                                if(List.size() < 1)
+                                    List.add(tv);
+                                else{
+                                    for(int i = 0; i < List.size(); i++)
+                                        if(tv.tientongcong >= List.get(i).tientongcong)
+                                        {
+                                            List.add(i, tv);
+                                            chen = true;
+                                            break;
+                                        }
                                 if(chen == false)
                                     List.add(tv);
+                                }
                                 exit2 = true;
                             }
                             if(loainghengiep == 2){
@@ -49,15 +54,19 @@ public class main {
                                 tv.TinhDiemCH();
                                 tv.TinhCuBet();
                                 tv.TinhTienThuong();
-                                for(int i = List.size() - 1; i > 0; i--)
-                                    if(tv.tientongcong <= List.get(i - 1).tientongcong)
-                                    {
-                                        List.add(i, tv);
-                                        chen = true;
-                                        break;
-                                    }
+                                if(List.size() < 1)
+                                    List.add(tv);
+                                else{
+                                    for(int i = 0; i < List.size(); i++)
+                                        if(tv.tientongcong >= List.get(i).tientongcong)
+                                        {
+                                            List.add(i, tv);
+                                            chen = true;
+                                            break;
+                                        }
                                 if(chen == false)
                                     List.add(tv);
+                                }
                                 exit2 = true;
                             }
                             if(loainghengiep != 1 && loainghengiep != 2)
@@ -66,6 +75,7 @@ public class main {
                         break;
                 case 2: do
                         {
+                            exit2 = false;
                             System.out.print("Dia Tinh thuoc loai nao? (1)Tim Quang, (2)Tinh Che Do: ");
                             loainghengiep = Integer.parseInt(scan.nextLine());
                             if(loainghengiep == 1){
@@ -75,15 +85,19 @@ public class main {
                                 tv.TinhDiemCH();
                                 tv.TinhCuBet();
                                 tv.TinhTienThuong();
-                                for(int i = List.size() - 1; i > 0; i--)
-                                    if(tv.tientongcong <= List.get(i - 1).tientongcong)
-                                    {
-                                        List.add(i, tv);
-                                        chen = true;
-                                        break;
-                                    }
+                                if(List.size() < 1)
+                                    List.add(tv);
+                                else{
+                                    for(int i = 0; i < List.size(); i++)
+                                        if(tv.tientongcong >= List.get(i).tientongcong)
+                                        {
+                                            List.add(i, tv);
+                                            chen = true;
+                                            break;
+                                        }
                                 if(chen == false)
                                     List.add(tv);
+                                }
                                 exit2 = true;
                             }
                             if(loainghengiep == 2){
@@ -93,15 +107,19 @@ public class main {
                                 tv.TinhDiemCH();
                                 tv.TinhCuBet();
                                 tv.TinhTienThuong();
-                                for(int i = List.size() - 1; i > 0; i--)
-                                    if(tv.tientongcong <= List.get(i - 1).tientongcong)
-                                    {
-                                        List.add(i, tv);
-                                        chen = true;
-                                        break;
-                                    }
+                                if(List.size() < 1)
+                                    List.add(tv);
+                                else{
+                                    for(int i = 0; i < List.size(); i++)
+                                        if(tv.tientongcong >= List.get(i).tientongcong)
+                                        {
+                                            List.add(i, tv);
+                                            chen = true;
+                                            break;
+                                        }
                                 if(chen == false)
                                     List.add(tv);
+                                }
                                 exit2 = true;
                             }
                             if(loainghengiep != 1 && loainghengiep != 2)
@@ -110,6 +128,7 @@ public class main {
                         break;
                 case 3: do
                         {
+                            exit2 = false;
                             System.out.print("Nguoi thuoc loai nao? (1)Nguoi Van Chuyen, (2)Linh Bao An: ");
                             loainghengiep = Integer.parseInt(scan.nextLine());
                             if(loainghengiep == 1){
@@ -119,15 +138,19 @@ public class main {
                                 tv.TinhDiemCH();
                                 tv.TinhCuBet();
                                 tv.TinhTienThuong();
-                                for(int i = List.size() - 1; i > 0; i--)
-                                    if(tv.tientongcong <= List.get(i - 1).tientongcong)
-                                    {
-                                        List.add(i, tv);
-                                        chen = true;
-                                        break;
-                                    }
+                                if(List.size() < 2)
+                                    List.add(tv);
+                                else{
+                                    for(int i = 0; i < List.size(); i++)
+                                        if(tv.tientongcong >= List.get(i).tientongcong)
+                                        {
+                                            List.add(i, tv);
+                                            chen = true;
+                                            break;
+                                        }
                                 if(chen == false)
                                     List.add(tv);
+                                }
                                 exit2 = true;
                             }
                             if(loainghengiep == 2){
@@ -137,15 +160,19 @@ public class main {
                                 tv.TinhDiemCH();
                                 tv.TinhCuBet();
                                 tv.TinhTienThuong();
-                                for(int i = List.size() - 1; i > 0; i--)
-                                    if(tv.tientongcong <= List.get(i - 1).tientongcong)
-                                    {
-                                        List.add(i, tv);
-                                        chen = true;
-                                        break;
-                                    }
+                                if(List.size() < 1)
+                                    List.add(tv);
+                                else{
+                                    for(int i = 0; i < List.size(); i++)
+                                        if(tv.tientongcong >= List.get(i).tientongcong)
+                                        {
+                                            List.add(i, tv);
+                                            chen = true;
+                                            break;
+                                        }
                                 if(chen == false)
                                     List.add(tv);
+                                }
                                 exit2 = true;
                             }
                             if(loainghengiep != 1 && loainghengiep != 2)
@@ -159,7 +186,7 @@ public class main {
         }
         }while(exit == false);
         
-        System.out.print("---------DANH SACH THANH VIEN GIA TOC--------\n");
+        System.out.print("-----------------DANH SACH THANH VIEN GIA TOC--------\n");
         for(int i = 0; i < List.size(); i++)
         {
             System.out.print("-------------------------------------------------------------------------\n");

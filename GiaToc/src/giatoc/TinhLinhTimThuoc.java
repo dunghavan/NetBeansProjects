@@ -16,6 +16,7 @@ public class TinhLinhTimThuoc extends GiaToc{
     private int slNhanSam = 0;
     private int slThatTamLien = 0;
     
+    @Override
     public void Nhap(){
         super.Nhap();
         chungtoc = "Tinh Linh";
@@ -48,6 +49,7 @@ public class TinhLinhTimThuoc extends GiaToc{
             }
            } while(exit == false);
     }
+    @Override
     public void Xuat(){
         TinhDiemCH();
         TinhCuBet();

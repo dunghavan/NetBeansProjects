@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
-    public  static void main(String []args){
+    protected ArrayList <GiaToc> List = new ArrayList<GiaToc>();
+    public  static void main(String []args) {
         ArrayList <GiaToc> List = new ArrayList<GiaToc>();
         int loaichungtoc;
         int loainghengiep;

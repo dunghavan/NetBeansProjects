@@ -5,11 +5,6 @@
  */
 package datetimetrongjava_sql;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.util.*;
-
 public class ViDuJDBC {
    public static void main(String[] args) {
       // Lay date va time chuan

@@ -47,7 +47,7 @@ public class JDBCODBC_Bridge {
             System.out.println("Loi: " + e.getMessage());
         }
         finally{
-            System.out.println("Finish!");
+            System.out.println("\nFinish!");
         }
     }
 }

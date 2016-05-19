@@ -8,7 +8,7 @@ public abstract class GiaToc {
     private String hoten;
     private String gioitinh;
     private String ngaysinh;
-    private static ArrayList<String> DSmatv = new ArrayList<String>();
+    private static final ArrayList<String> DSmatv = new ArrayList<String>();
     private boolean inputted;
     
     protected  String chungtoc;
@@ -42,7 +42,7 @@ public abstract class GiaToc {
             }
     }
     
-    protected void Nhap(){
+    protected void Nhap()throws SoLoaiException{
         Scanner scan = new Scanner(System.in);
         do{
             try{

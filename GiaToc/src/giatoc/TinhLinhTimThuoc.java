@@ -16,34 +16,92 @@ public class TinhLinhTimThuoc extends GiaToc{
     private int slNhanSam = 0;
     private int slThatTamLien = 0;
     
+    /**
+     *
+     * @throws SoLoaiException
+     */
     @Override
-    public void Nhap(){
+    public void Nhap()throws SoLoaiException{
         super.Nhap();
         chungtoc = "Tinh Linh";
         nghenghiep = "Tim Thuoc";
-        int loai;
+        int loai = 0;
         boolean exit = false;
         Scanner scan = new Scanner(System.in);
         do{
             System.out.print("Nhap loai thuoc tim duoc, hay nhap so tuong ung: (1)Linh Chi, (2)Ha Thu O, (3)Nhan Sam, (4)That Tam Lien, (0)Ket Thuc Viec Nhap...");
-            loai = Integer.parseInt(scan.nextLine());  
+            try{
+                loai = Integer.parseInt(scan.nextLine());
+                if(loai < 0 || loai > 5){
+                    throw new SoLoaiException();
+                }
+            }
+            catch(NumberFormatException e){
+                loai = 5;
+                System.out.println("So khong hop le !");
+            }
+            catch(SoLoaiException e){
+                System.out.println(e.getMessage());
+            }
             switch(loai)
             {
                 case 1:
                         System.out.print("Nhap so luong Linh Chi: ");
-                        slLinhChi += Integer.parseInt(scan.nextLine());
+                        try{
+                            slLinhChi += Integer.parseInt(scan.nextLine());
+                            if(slLinhChi < 0)
+                                throw new SoLoaiException();
+                        }
+                        catch(SoLoaiException e){
+                            System.out.println(e.getMessage());
+                        }
+                        catch(NumberFormatException e){
+                            System.out.println("So khong hop le!");
+                        }
                         break;
                 case 2:
                         System.out.print("Nhap so luong Ha Thu O: ");
-                        slHaThuO += Integer.parseInt(scan.nextLine());
+                        try{
+                            slHaThuO += Integer.parseInt(scan.nextLine());
+                            if(slHaThuO < 0)
+                                throw new SoLoaiException();
+                        }
+                        catch(SoLoaiException e){
+                            System.out.println(e.getMessage());
+                        }
+                        catch(NumberFormatException e){
+                            System.out.println("So khong hop le!");
+                        }
                         break;
                 case 3:
                         System.out.print("Nhap so luong Nhan Sam: ");
-                        slNhanSam += Integer.parseInt(scan.nextLine());
+                        try{
+                            slNhanSam += Integer.parseInt(scan.nextLine());
+                            if(slNhanSam < 0)
+                                throw new SoLoaiException();
+                        }
+                        catch(SoLoaiException e){
+                            System.out.println(e.getMessage());
+                        }
+                        catch(NumberFormatException e){
+                            System.out.println("So khong hop le!");
+                        }
                         break;
                 case 4:
                         System.out.print("Nhap so luong That Tam Lien: ");
-                        slThatTamLien += Integer.parseInt(scan.nextLine());
+                        try{
+                            slThatTamLien += Integer.parseInt(scan.nextLine());
+                            if(slThatTamLien < 0)
+                                throw new SoLoaiException();
+                        }
+                        catch(SoLoaiException e){
+                            System.out.println(e.getMessage());
+                        }
+                        catch(NumberFormatException e){
+                            System.out.println("So khong hop le!");
+                        }
+                        break;
+                case 5:
                         break;
                 case 0: exit = true;
             }

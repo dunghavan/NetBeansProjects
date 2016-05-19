@@ -5,16 +5,26 @@ import java.util.Scanner;
 public class TinhLinhTrongThuoc extends GiaToc{
     private int slCayTrong;
     @Override
-    public void Nhap(){
+    public void Nhap()throws SoLoaiException{
         super.Nhap();
         chungtoc = "Tinh Linh";
         nghenghiep = "Trong Thuoc";
         Scanner scan = new Scanner(System.in);
         do{
             System.out.print("Nhap so luong cay thuoc trong duoc: ");
-            slCayTrong = Integer.parseInt(scan.nextLine());
-            if(slCayTrong < 0)
-                System.out.print("So luong khong hop le! Nhap lai: ");
+            try{
+                slCayTrong = Integer.parseInt(scan.nextLine());
+                if(slCayTrong < 0){
+                    throw new SoLoaiException();
+                }
+            }
+            catch(NumberFormatException e){
+                slCayTrong = -1;
+                System.out.println("So khong hop le !");
+            }
+            catch(SoLoaiException e){
+                System.out.println(e.getMessage());
+            }
         } while(slCayTrong < 0);
     }
     @Override

@@ -10,34 +10,95 @@ public class LinhBaoAn extends GiaToc{
     private int SlHo = 0;
     
     @Override
-    public void Nhap(){
+    public void Nhap()throws SoLoaiException{
         super.Nhap();
         chungtoc = "Nguoi";
         nghenghiep = "Linh Bao An";
         System.out.print("Nhap so chuyen xe bao ve duoc: ");
         Scanner scan = new Scanner(System.in);
         slChuyenXeBaoVeThanhCong = Integer.parseInt(scan.nextLine());
+        boolean exitcheck;
+        int check = 0;
+        do{
         System.out.print("Co giet duoc thu du hay khong? (0)Khong, (1)Co: ");
-        int check = Integer.parseInt(scan.nextLine());
-        int loai;
+        try{
+                check = Integer.parseInt(scan.nextLine());
+                exitcheck = true;
+                if(check < 0 || check > 1){
+                    throw new SoLoaiException();
+                }
+            }
+            catch(NumberFormatException e){
+                exitcheck = false;
+                System.out.println("So khong hop le !");
+            }
+            catch(SoLoaiException e){
+                exitcheck = false;
+                System.out.println(e.getMessage());
+            }
+        }while(exitcheck == false);
+        int loai = 4;
         boolean exit = false;
         if(check == 1)
             do{
                 System.out.print("Nhap loai thu giet duoc,(1)Soi, (2)Gau, (3)Ho, (0)Ket Thuc Viec Nhap:  ");
-                loai = Integer.parseInt(scan.nextLine());
-                switch(loai)
-                {
-                    case 1: System.out.print("Nhap so luong Soi giet duoc: ");
-                            slSoi += Integer.parseInt(scan.nextLine());
-                            break;
-                    case 2: System.out.print("Nhap so luong Soi giet duoc: ");
-                            slGau += Integer.parseInt(scan.nextLine());
-                            break;
-                    case 3: System.out.print("Nhap so luong Soi giet duoc: ");
-                            SlHo += Integer.parseInt(scan.nextLine());
-                            break;
-                    case 0: exit = true;
+                try{
+                    loai = Integer.parseInt(scan.nextLine());
+                    if(loai < 0 || loai > 4){
+                        throw new SoLoaiException();
                 }
+            }
+            catch(NumberFormatException e){
+                loai = 4;
+                System.out.println("So khong hop le !");
+            }
+            catch(SoLoaiException e){
+                System.out.println(e.getMessage());
+            }
+            switch(loai)
+            {
+                case 1: System.out.print("Nhap so luong Soi giet duoc: ");
+                    try{
+                        slSoi += Integer.parseInt(scan.nextLine());
+                        if(slSoi < 0)
+                            throw new SoLoaiException();
+                    }
+                    catch(SoLoaiException e){
+                        System.out.println(e.getMessage());
+                    }
+                    catch(NumberFormatException e){
+                        System.out.println("So khong hop le!");
+                    }
+                        break;
+                case 2: System.out.print("Nhap so luong Gau giet duoc: ");
+                    try{
+                        slGau += Integer.parseInt(scan.nextLine());
+                        if(slGau < 0)
+                            throw new SoLoaiException();
+                    }
+                    catch(SoLoaiException e){
+                        System.out.println(e.getMessage());
+                    }
+                    catch(NumberFormatException e){
+                        System.out.println("So khong hop le!");
+                    }
+                        break;
+                case 3: System.out.print("Nhap so luong Ho giet duoc: ");
+                    try{
+                        SlHo += Integer.parseInt(scan.nextLine());
+                        if(SlHo < 0)
+                            throw new SoLoaiException();
+                    }
+                    catch(SoLoaiException e){
+                        System.out.println(e.getMessage());
+                    }
+                    catch(NumberFormatException e){
+                        System.out.println("So khong hop le!");
+                    }
+                        break;
+                case 4: break;
+                case 0: exit = true;
+            }
             } while(exit == false);
         else{}
     }

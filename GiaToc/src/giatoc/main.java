@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class main {
     protected ArrayList <GiaToc> List = new ArrayList<GiaToc>();
-    public  static void main(String []args) {
+    public  static void main(String []args) throws SoLoaiException{
         ArrayList <GiaToc> List = new ArrayList<GiaToc>();
-        int loaichungtoc;
+        int loaichungtoc = 0;
         int loainghengiep;
         boolean exit = false;
         boolean exit2;
@@ -18,7 +18,12 @@ public class main {
         {
             System.out.print("---------------------------------------------------\n");
             System.out.print("Ban muon nhap thanh vien loai nao? (1)Tinh Linh, (2)Dia Tinh, (3)Nguoi, (0)Ket thuc viec nhap: ");
-            loaichungtoc = Integer.parseInt(scan.nextLine());
+            try{
+                loaichungtoc = Integer.parseInt(scan.nextLine());
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Loai chung toc khong hop le.");
+            }
             switch(loaichungtoc)
             {
                 case 1: do

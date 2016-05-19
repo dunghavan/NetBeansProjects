@@ -16,6 +16,7 @@ public class MainClass {
         try{
             int x;
             JDBC_ODBC_Bridge.QueryData();
+            //JDBC_SQLServer.QueryData();
         }
         catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());

@@ -6,13 +6,26 @@ public class NguoiVanChuyen extends GiaToc{
     private int slChuyenXe = 0;
     
     @Override
-    public void Nhap(){
+    public void Nhap()throws SoLoaiException{
         super.Nhap();
         chungtoc = "Nguoi";
         nghenghiep = "Van Chuyen";
-        System.out.print("Nhap so chuyen xe: ");
         Scanner scan = new Scanner(System.in);
-        slChuyenXe += Integer.parseInt(scan.nextLine());
+        do{
+            System.out.print("Nhap so chuyen xe: ");
+            try{
+                slChuyenXe = Integer.parseInt(scan.nextLine());
+                if(slChuyenXe < 0){
+                    throw new SoLoaiException();
+                }
+            }
+            catch(NumberFormatException e){
+                System.out.println("So khong hop le !");
+            }
+            catch(SoLoaiException e){
+                System.out.println(e.getMessage());
+            }
+        }while(slChuyenXe < 0);
     }
 
     @Override

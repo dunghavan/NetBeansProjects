@@ -1,0 +1,5 @@
+﻿Lớp FileWriter trong Java kế thừa từ lớp OutputStreamWriter. Lớp này được sử dụng để ghi các luồng ký tự.
+
+Lớp FileWriter có một số constructor để tạo các đối tượng cần thiết.
+
+Cú pháp sau tạo một đối tượng FileWriter được cung cấp một đối tượng File.

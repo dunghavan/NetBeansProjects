@@ -14,7 +14,6 @@ import java.sql.SQLException;
 public class MainClass {
     public static void main(String[] args) {
         try{
-            int x;
             JDBC_ODBC_Bridge.QueryData();
             //JDBC_SQLServer.QueryData();
         }

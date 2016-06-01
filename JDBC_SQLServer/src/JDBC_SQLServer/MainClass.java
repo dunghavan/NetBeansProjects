@@ -14,8 +14,8 @@ import java.sql.SQLException;
 public class MainClass {
     public static void main(String[] args) {
         try{
-            JDBC_ODBC_Bridge.QueryData();
-            //JDBC_SQLServer.QueryData();
+            //JDBC_ODBC_Bridge.QueryData();
+            JDBC_SQLServer.QueryData();
         }
         catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());

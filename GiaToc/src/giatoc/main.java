@@ -1,11 +1,15 @@
 package giatoc;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
     protected ArrayList <GiaToc> List = new ArrayList<GiaToc>();
-    public  static void main(String []args) throws SoLoaiException{
+    public  static void main(String []args) throws SoLoaiException, IOException{
         ArrayList <GiaToc> List = new ArrayList<GiaToc>();
         int loaichungtoc = 0;
         int loainghengiep;
@@ -191,13 +195,16 @@ public class main {
                         System.out.print("Khong hop le, hay nhap lai! ");
         }
         }while(exit == false);
-        
-        System.out.print("-----------------DANH SACH THANH VIEN GIA TOC--------\n");
+        PrintWriter out = new PrintWriter(new BufferedWriter( new FileWriter("dsthanhvien.txt", true)));
+        System.out.print("-----------------DANH SACH THANH VIEN GIA TOC--------\r\n");
+        out.print("-----------------DANH SACH THANH VIEN GIA TOC--------\r\n");
         for(int i = 0; i < List.size(); i++)
         {
-            System.out.print("-------------------------------------------------------------------------\n");
             System.out.print("STT: " + (i + 1));
             List.get(i).Xuat();
+            out.print("STT: " + (i + 1));
+            out.close();
+            List.get(i).Write();
         }
     }
         

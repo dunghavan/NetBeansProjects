@@ -1,0 +1,4 @@
+BichNgoc	5	5
+LamNgoc	10	10
+HongNgoc	15	15
+KimCuong	20	20

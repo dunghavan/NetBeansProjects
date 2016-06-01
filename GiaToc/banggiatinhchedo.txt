@@ -1,0 +1,3 @@
+DungCuSanXuat	1	1
+VuKhi	2	2
+AoGiap 3	3

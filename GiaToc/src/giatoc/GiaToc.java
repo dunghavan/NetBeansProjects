@@ -1,9 +1,17 @@
 package giatoc;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class GiaToc {
+
+    /**
+     *
+     */
     private  String mathanhvien;
     private String hoten;
     private String gioitinh;
@@ -80,6 +88,15 @@ public abstract class GiaToc {
         System.out.print("  |Ho ten: " + hoten);
         System.out.print("  |Gioi tinh: " + gioitinh);
         System.out.print("  |Ngay sinh: " + ngaysinh);
+    }
+    protected void Write() throws IOException{
+        PrintWriter out = new PrintWriter(new BufferedWriter( new FileWriter("dsthanhvien.txt", true)));
+        
+        out.print("  |Ma TV: " + mathanhvien);
+        out.print("  |Ho ten: " + hoten);
+        out.print("  |Gioi tinh: " + gioitinh);
+        out.print("  |Ngay sinh: " + ngaysinh);
+        out.close();
     }
     abstract void TinhDiemCH();
     protected  void TinhTienThuong(){

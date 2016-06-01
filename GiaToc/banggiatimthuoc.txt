@@ -1,0 +1,4 @@
+Linhchi	5	5
+HaThuO	7	7
+NhanSam	10	10
+ThatTamLien	20	20

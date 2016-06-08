@@ -8,3 +8,7 @@ Cubet: 600, Diem cong hien: 600, Tien thuong: 0, Thu nhap: 600
   |Ma TV: 456  |Ho ten: Trung  |Gioi tinh: Nu  |Ngay sinh: 09  |Chung toc: Dia Linh  |Nghe nghiep: Tim Quang
 Cubet: 32100, Diem cong hien: 31500, Tien thuong: 600, Thu nhap: 32700
 -------------------------------------------------------------------------
+-----------------DANH SACH THANH VIEN GIA TOC--------
+STT: 1  |Ma TV: 2  |Ho ten: Dung  |Gioi tinh: Nam  |Ngay sinh: 23  |Chung toc: Tinh Linh  |Nghe nghiep: Tim Thuoc
+Cubet: 230, Diem cong hien: 230, Tien thuong: 0, Thu nhap: 230
+-------------------------------------------------------------------------

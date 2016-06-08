@@ -18,7 +18,7 @@ import java.sql.Statement;
 public class JDBC_SQLServer {
     public static Connection CreateConnection() throws ClassNotFoundException, SQLException {
         //Buoc 1: Tai Class Driver:
-        //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         // Buoc 2: Tao doi tuong connection:
         String hostName = "localhost";  //Ten server ma SQL Server dang chay
         String sqlInstance = "SQLEXPRESS";

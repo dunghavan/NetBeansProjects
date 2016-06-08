@@ -18,7 +18,7 @@ public class MainClass {
             JDBC_SQLServer.QueryData();
         }
         catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
+            System.out.println("Loi: " + e.getMessage());
         }
         finally {
         //

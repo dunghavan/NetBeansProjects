@@ -1,0 +1,4 @@
+-----------------DANH SACH THANH VIEN GIA TOC--------
+STT: 1  |Ma TV: 034  |Ho ten: SDs  |Gioi tinh: nu  |Ngay sinh: 21  |Chung toc: Dia Linh  |Nghe nghiep: Tinh Che Do
+Cubet: 0, Diem cong hien: 0, Tien thuong: 0, Thu nhap: 0
+-------------------------------------------------------------------------

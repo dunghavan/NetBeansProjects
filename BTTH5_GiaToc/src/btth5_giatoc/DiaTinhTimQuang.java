@@ -1,8 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package giatoc;
+package btth5_giatoc;
 
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -13,33 +9,23 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author user
- */
-public class TinhLinhTimThuoc extends GiaToc{
-    private int slLinhChi = 0;
-    private int slHaThuO = 0;
-    private int slNhanSam = 0;
-    private int slThatTamLien = 0;
-    public TinhLinhTimThuoc(){
-        try{
-            DocFile();
-        }
-        catch(IOException e){
-            System.out.println("Loi xay ra: " + e.getMessage());
-        }
-}
-    @Override
-    public void Nhap()throws SoLoaiException{
+
+public class DiaTinhTimQuang extends GiaToc{
+   private int slBichNgoc = 0;
+   private int slLamNgoc = 0;
+   private int slHongNgoc = 0;
+   private int slKimCuong = 0;
+   
+   @Override
+   public void Nhap()throws SoLoaiException{
         super.Nhap();
-        chungtoc = "Tinh Linh";
-        nghenghiep = "Tim Thuoc";
+        chungtoc = "Dia Linh";
+        nghenghiep = "Tim Quang";
         int loai = 0;
         boolean exit = false;
         Scanner scan = new Scanner(System.in);
         do{
-            System.out.print("Nhap loai thuoc tim duoc, hay nhap so tuong ung: (1)Linh Chi, (2)Ha Thu O, (3)Nhan Sam, (4)That Tam Lien, (0)Ket Thuc Viec Nhap...");
+            System.out.print("Nhap loai quang tim duoc, hay nhap so tuong ung: (1)Bich Ngoc, (2)Lam Ngoc, (3)Hong Ngoc, (4)Kim Cuong, (0)Ket Thuc Viec Nhap...");
             try{
                 loai = Integer.parseInt(scan.nextLine());
                 if(loai < 0 || loai > 5){
@@ -52,14 +38,14 @@ public class TinhLinhTimThuoc extends GiaToc{
             }
             catch(SoLoaiException e){
                 System.out.println(e.getMessage());
-            }
+            }  
             switch(loai)
             {
                 case 1:
-                        System.out.print("Nhap so luong Linh Chi: ");
+                        System.out.print("Nhap so luong Bich Ngoc: ");
                         try{
-                            slLinhChi += Integer.parseInt(scan.nextLine());
-                            if(slLinhChi < 0)
+                            slBichNgoc += Integer.parseInt(scan.nextLine());
+                            if(slBichNgoc < 0)
                                 throw new SoLoaiException();
                         }
                         catch(SoLoaiException e){
@@ -70,10 +56,10 @@ public class TinhLinhTimThuoc extends GiaToc{
                         }
                         break;
                 case 2:
-                        System.out.print("Nhap so luong Ha Thu O: ");
+                        System.out.print("Nhap so luong Lam Ngoc: ");
                         try{
-                            slHaThuO += Integer.parseInt(scan.nextLine());
-                            if(slHaThuO < 0)
+                            slLamNgoc += Integer.parseInt(scan.nextLine());
+                            if(slLamNgoc < 0)
                                 throw new SoLoaiException();
                         }
                         catch(SoLoaiException e){
@@ -84,10 +70,10 @@ public class TinhLinhTimThuoc extends GiaToc{
                         }
                         break;
                 case 3:
-                        System.out.print("Nhap so luong Nhan Sam: ");
+                        System.out.print("Nhap so luong Hong Ngoc: ");
                         try{
-                            slNhanSam += Integer.parseInt(scan.nextLine());
-                            if(slNhanSam < 0)
+                            slHongNgoc += Integer.parseInt(scan.nextLine());
+                            if(slHongNgoc < 0)
                                 throw new SoLoaiException();
                         }
                         catch(SoLoaiException e){
@@ -98,10 +84,10 @@ public class TinhLinhTimThuoc extends GiaToc{
                         }
                         break;
                 case 4:
-                        System.out.print("Nhap so luong That Tam Lien: ");
+                        System.out.print("Nhap so luong Kim Cuong: ");
                         try{
-                            slThatTamLien += Integer.parseInt(scan.nextLine());
-                            if(slThatTamLien < 0)
+                            slKimCuong += Integer.parseInt(scan.nextLine());
+                            if(slKimCuong < 0)
                                 throw new SoLoaiException();
                         }
                         catch(SoLoaiException e){
@@ -111,28 +97,33 @@ public class TinhLinhTimThuoc extends GiaToc{
                             System.out.println("So khong hop le!");
                         }
                         break;
-                case 5:
-                        break;
+                case 5: break;
                 case 0: exit = true;
             }
            } while(exit == false);
-    }
-    @Override
-    public void Xuat(){
+   }
+   @Override
+   public void Xuat(){
+       try{
+            DocFile();
+        }
+        catch(IOException e){
+            System.out.println("Loi xay ra: " + e.getMessage());
+        }
         TinhDiemCH();
         TinhCuBet();
         TinhTienThuong();
         super.Xuat();
         System.out.print("  |Chung toc: " + chungtoc + "  |Nghe nghiep: " + nghenghiep);
-        System.out.print("\nThanh qua lao dong: Linh chi " + slLinhChi + ", Ha thu o " + slHaThuO + ", Nhan sam " + slNhanSam + ", That tam lien " + slThatTamLien);
+        System.out.print("\nThanh qua lao dong: Bich ngoc " + slBichNgoc + ", Lam ngoc " + slLamNgoc + ", Hong ngoc " + slHongNgoc + ", Kim cuong " + slKimCuong);
         System.out.print("\nCubet: " + cubet + ", Diem cong hien: " + diemconghien + ", Tien thuong: " + tienthuong + ", Thu nhap: " + tientongcong);
         System.out.print("\n-------------------------------------------------------------------------\n");
-    }@Override
-    public void Write() throws IOException{
+    }
+   @Override
+   public void Write() throws IOException{
         TinhDiemCH();
         TinhCuBet();
         TinhTienThuong();
-        super.Write();
         PrintWriter out = new PrintWriter(new BufferedWriter( new FileWriter("dsthanhvien.txt", true)));
         out.print("  |Chung toc: " + chungtoc + "  |Nghe nghiep: " + nghenghiep);
         out.print("\r\nCubet: " + cubet + ", Diem cong hien: " + diemconghien + ", Tien thuong: " + tienthuong + ", Thu nhap: " + tientongcong);
@@ -140,25 +131,24 @@ public class TinhLinhTimThuoc extends GiaToc{
         out.close();
         PrintWriter p = new PrintWriter(new BufferedWriter( new FileWriter("thanhqualaodong.txt", true)));
         p.print("  MaTV: " + getMTV());
-        p.print("   Thanh qua lao dong: Linh chi " + slLinhChi + ", Ha thu o " + slHaThuO + ", Nhan sam " + slNhanSam + ", That tam lien project" + slThatTamLien);
+        p.print("   Thanh qua lao dong: Bich ngoc " + slBichNgoc + ", Lam ngoc " + slLamNgoc + ", Hong ngoc " + slHongNgoc + ", Kim cuong " + slKimCuong);
         p.print("\r\n--------------------------------------------------------------------------------------------\r\n");
         p.close();
     }
-    @Override
+   @Override
     protected void TinhDiemCH(){
-        diemconghien = slLinhChi * giaLinhChi + slHaThuO * giaHaThuO + slNhanSam * giaNhanSam + slThatTamLien * giaThatTamLien;
+        diemconghien = slBichNgoc * giaBichNgoct + slLamNgoc * giaLamNgoc + slHongNgoc * giaHongNgoc + slKimCuong * giaKimCuong;
     }
     @Override
     protected void TinhCuBet(){
         TinhTienThuong();
-         cubet = slLinhChi * DCHLinhChi + slHaThuO * DCHHaThuO + slNhanSam * DCHNhanSam + slThatTamLien * DCHThatTamLien + tienthuong;
+         cubet = slBichNgoc * DCHBichNgoc + slLamNgoc * DCHLamNgoc + slHongNgoc * DCHHongNgoc + slKimCuong * DCHKimCuong + tienthuong;
     }
-    private int giaLinhChi, DCHLinhChi;
-    private int giaHaThuO,DCHHaThuO;
-    private int giaNhanSam, DCHNhanSam;
-    private int giaThatTamLien, DCHThatTamLien;
-
-    private void DocFile() throws FileNotFoundException, IOException{
+    private int giaBichNgoct, DCHBichNgoc;
+    private int giaLamNgoc, DCHLamNgoc;
+    private int giaHongNgoc, DCHHongNgoc;
+    private int giaKimCuong, DCHKimCuong;
+    public void DocFile() throws FileNotFoundException, IOException{
         // TODO code application logic here
         //Vi du doc du lieu tu file
         class Struct {
@@ -167,7 +157,7 @@ public class TinhLinhTimThuoc extends GiaToc{
         private String DCH = "";
     }
         ArrayList<Struct> arr = new ArrayList<Struct>();
-        FileReader in = new FileReader("banggiatimthuoc.txt");
+        FileReader in = new FileReader("banggiatimquang.txt");
         char[] a = new char[300];
         in.read(a);
         Struct object = new Struct();
@@ -199,23 +189,22 @@ public class TinhLinhTimThuoc extends GiaToc{
             }
         }
         for(Struct ob: arr){
-            if(ob.ten.trim().equalsIgnoreCase("LinhChi")){
-                giaLinhChi = Integer.parseInt(ob.gia);
-                DCHLinhChi = Integer.parseInt(ob.DCH.trim());
+            if(ob.ten.trim().equalsIgnoreCase("BichNgoc")){
+                giaBichNgoct = Integer.parseInt(ob.gia);
+                DCHBichNgoc = Integer.parseInt(ob.DCH.trim());
             }
-            if(ob.ten.trim().equalsIgnoreCase("HaThuO")){
-                giaHaThuO = Integer.parseInt(ob.gia);
-                DCHHaThuO = Integer.parseInt(ob.DCH.trim());
+            if(ob.ten.trim().equalsIgnoreCase("LamNgoc")){
+                giaLamNgoc = Integer.parseInt(ob.gia);
+                DCHLamNgoc = Integer.parseInt(ob.DCH.trim());
             }
-            if(ob.ten.trim().equalsIgnoreCase("NhanSam")){
-                giaNhanSam = Integer.parseInt(ob.gia);
-                DCHNhanSam = Integer.parseInt(ob.DCH.trim());
+            if(ob.ten.trim().equalsIgnoreCase("HongNgoc")){
+                giaHongNgoc = Integer.parseInt(ob.gia);
+                DCHHongNgoc = Integer.parseInt(ob.DCH.trim());
             }
-            if(ob.ten.trim().equalsIgnoreCase("ThatTamLien")){
-                giaThatTamLien = Integer.parseInt(ob.gia);
-                DCHThatTamLien = Integer.parseInt(ob.DCH.trim());
+            if(ob.ten.trim().equalsIgnoreCase("KimCuong")){
+                giaKimCuong = Integer.parseInt(ob.gia);
+                DCHKimCuong = Integer.parseInt(ob.DCH.trim());
             }
         }
-        //in.close();
     }
 }

@@ -5,13 +5,12 @@
  */
 package btth5_giatoc;
 
-import com.sun.media.sound.SoftEnvelopeGenerator;
 import java.awt.event.ItemEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -146,7 +145,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_NgaySinh.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel_NgaySinh.setText("Ngày Sinh: ");
 
-        jButton_Nhap.setText("Nhập");
+        jDateChooser_NgaySinh.setBorder(new javax.swing.border.MatteBorder(null));
+        jDateChooser_NgaySinh.setDateFormatString("dd- MM-yyyy");
+        jDateChooser_NgaySinh.setDoubleBuffered(false);
+
+        jButton_Nhap.setText("Lưu Xuống CSDL");
         jButton_Nhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton_NhapMouseClicked(evt);
@@ -184,28 +187,28 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_BichNgoc.setText("Bích Ngọc:");
         jLabel_BichNgoc.setEnabled(false);
 
-        jTextField_BichNgoc.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_BichNgoc.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_BichNgoc.setEnabled(false);
 
         jLabel_LamNgoc.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_LamNgoc.setText("Lam Ngọc:");
         jLabel_LamNgoc.setEnabled(false);
 
-        jTextField_LamNgoc.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_LamNgoc.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_LamNgoc.setEnabled(false);
 
         jLabel_HongNgoc.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_HongNgoc.setText("Hồng Ngọc:");
         jLabel_HongNgoc.setEnabled(false);
 
-        jTextField_HongNgoc.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_HongNgoc.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_HongNgoc.setEnabled(false);
 
         jLabel_KimCuong.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_KimCuong.setText("Kim Cương:");
         jLabel_KimCuong.setEnabled(false);
 
-        jTextField_KimCuong.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_KimCuong.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_KimCuong.setEnabled(false);
         jTextField_KimCuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,6 +216,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel_SLCayThuoc.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_SLCayThuoc.setText("Số Lượng Cây Thuốc Trồng Được:");
         jLabel_SLCayThuoc.setEnabled(false);
 
@@ -222,17 +226,17 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_AoGiap.setText("Áo Giáp:");
         jLabel_AoGiap.setEnabled(false);
 
-        jTextField_AoGiap.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_AoGiap.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_AoGiap.setEnabled(false);
 
         jLabel_DungCuSX.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_DungCuSX.setText("Dụng Cụ SX:");
         jLabel_DungCuSX.setEnabled(false);
 
-        jTextField_DungCuSX.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_DungCuSX.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_DungCuSX.setEnabled(false);
 
-        jTextField_VuKhi.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_VuKhi.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_VuKhi.setEnabled(false);
 
         jLabel_VuKhi.setForeground(new java.awt.Color(255, 0, 51));
@@ -243,17 +247,17 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_Ho.setText("Hổ:");
         jLabel_Ho.setEnabled(false);
 
-        jTextField_Ho.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_Ho.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_Ho.setEnabled(false);
 
-        jTextField_Soi.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_Soi.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_Soi.setEnabled(false);
 
         jLabel_Soi.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_Soi.setText("Chó Sói:");
         jLabel_Soi.setEnabled(false);
 
-        jTextField_Gau.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_Gau.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_Gau.setEnabled(false);
 
         jLabel_Gau.setForeground(new java.awt.Color(255, 0, 51));
@@ -264,7 +268,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_SLChuyenXeBaoVe.setText("Số Lượng Chuyến Xe Bảo Vệ Được:");
         jLabel_SLChuyenXeBaoVe.setEnabled(false);
 
-        jTextField_SLChuyenXeBaoVe.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_SLChuyenXeBaoVe.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_SLChuyenXeBaoVe.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
@@ -363,9 +367,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel_ThatTamLien)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField_ThatTamLien, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton_Nhap)
-                                .addGap(43, 43, 43))
+                                .addGap(106, 106, 106))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel_SLChuyenXeVanChuyen)
                                 .addGap(18, 18, 18)
@@ -383,8 +385,12 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBox_ChungToc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2)
-                            .addComponent(jLabel_Test))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(272, 272, 272)
+                                .addComponent(jButton_Nhap, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel_Test)))
+                        .addGap(0, 307, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -456,8 +462,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel_NhanSam)
                     .addComponent(jTextField_NhanSam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_ThatTamLien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_ThatTamLien)
-                    .addComponent(jButton_Nhap))
+                    .addComponent(jLabel_ThatTamLien))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_BichNgoc)
@@ -486,9 +491,14 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jTextField_Gau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_SLChuyenXeBaoVe)
                     .addComponent(jTextField_SLChuyenXeBaoVe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addComponent(jLabel_Test)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jButton_Nhap)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_Test))))
         );
 
         pack();
@@ -496,6 +506,28 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jTextField_MaTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_MaTVActionPerformed
         // TODO add your handling code here:
+        jTextField_MaTV.getDocument().addDocumentListener(new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                jLabel_Test.setText("...");
+                System.out.println("Dang sua...");
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                jLabel_Test.setText("...");
+                System.out.println("Dang sua...");
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                jLabel_Test.setText("...");
+                System.out.println("Dang sua...");
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
     }//GEN-LAST:event_jTextField_MaTVActionPerformed
 
     private void jComboBox_GTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_GTActionPerformed
@@ -547,20 +579,46 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton_NhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_NhapMouseClicked
         Object o = jComboBox_NgheNghiep.getSelectedItem();
         String s = o.toString();
-        //String ss = jTextField_LinhChi.getText();
-        //if(s.equalsIgnoreCase("Tìm Thuốc")){
-            //jLabel_Test.setText(ss);
-                //}
-        if(s.equalsIgnoreCase("Tìm Thuốc")){
-            g = new TinhLinhTimThuoc();
-            jLabel_Test.setText(jTextField_LinhChi.getText());
-            try {
-                g.Write();
-            } catch (SQLException | IOException ex) {
-                System.out.println("Loi ham Write: " + ex.getMessage());
+//        if(s.equalsIgnoreCase("Tìm Thuốc")){
+//            g = new TinhLinhTimThuoc();
+//            try {
+//                g.Write();
+//            } catch (SQLException | IOException ex) {
+//                System.out.println("Loi ham Write: " + ex.getMessage());
+//            }
+//        }
+        try{
+            switch(s)
+            {
+                case "Tìm Thuốc":
+                    g = new TinhLinhTimThuoc();
+                    g.Write();
+                    break;
+                case "Trồng Thuốc":
+                    g = new TinhLinhTrongThuoc();
+                    g.Write();
+                    break;
+                case "Tìm Quặng":
+                    g = new DiaTinhTimQuang();
+                    g.Write();
+                    break;
+                case "Tinh Chế Đồ":
+                    g = new DiaTinhTinhCheDo();
+                    g.Write();
+                    break;
+                case "Người Vận Chuyển":
+                    g = new NguoiVanChuyen();
+                    g.Write();
+                    break;
+                case "Lính Bảo An":
+                    g = new LinhBaoAn();
+                    g.Write();
+                    break;
             }
         }
-
+        catch(SQLException | IOException  | SoLuongException ex) {
+        }
+    
     }//GEN-LAST:event_jButton_NhapMouseClicked
 
     private void jComboBox_NgheNghiepItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_NgheNghiepItemStateChanged
@@ -684,15 +742,22 @@ public class NewJFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private GiaToc g;
     public String Get_JTextField_MaTV(){
+        if(jTextField_MaTV.getText().isEmpty())
+            return "";
         return jTextField_MaTV.getText();
     }
     public String Get_JTextField_HoTen(){
+        if(jTextField_HoTen.getText().isEmpty())
+            return "";
         return jTextField_HoTen.getText();
     }
     public String Get_JComboBox_GT(){
         return jComboBox_GT.getSelectedItem().toString();
     }
     public String Get_JDateChooser(){
+        if(jDateChooser_NgaySinh.getDate() == null){
+            return "";
+        }
         SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
         return f.format(jDateChooser_NgaySinh.getDate());
     }
@@ -707,69 +772,136 @@ public class NewJFrame extends javax.swing.JFrame {
         return Integer.parseInt(jTextField_LinhChi.getText());
         }
         catch(NumberFormatException e){
-            jLabel_Test.setText("\nLoi Parse 1: "+ jTextField_LinhChi.getText());
         }
-        return 0;
+        return -1;
     }
     public int Get_HaThuO(){
+        try{
         return Integer.parseInt(jTextField_HaThuO.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_NhanSam(){
         try{
         return Integer.parseInt(jTextField_NhanSam.getText());
         }
         catch(NumberFormatException e){
-            jLabel_Test.setText("\nLoi Parse 2: "+ jTextField_NhanSam.getText());
         }
-        return 0;
+        return -1;
     }
     public int Get_ThatTamLien(){
         try{
         return Integer.parseInt(jTextField_ThatTamLien.getText());
         }
         catch(NumberFormatException e){
-            jLabel_Test.setText("\nLoi Parse 3: "+ jTextField_ThatTamLien.getText());
         }
-        return 0;
+        return -1;
     }
     public int Get_CongCuSX(){
+        try{
         return Integer.parseInt(jTextField_DungCuSX.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_VuKhi(){
+        try{
         return Integer.parseInt(jTextField_VuKhi.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_AoGiap(){
+        try{
         return Integer.parseInt(jTextField_AoGiap.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_Soi(){
+        try{
         return Integer.parseInt(jTextField_Soi.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_Gau(){
+        try{
         return Integer.parseInt(jTextField_Gau.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_Ho(){
+        try{
         return Integer.parseInt(jTextField_Ho.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_BichNgoc(){
+        try{
         return Integer.parseInt(jTextField_BichNgoc.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_LamNgoc(){
+        try{
         return Integer.parseInt(jTextField_LamNgoc.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_HongNgoc(){
+        try{
         return Integer.parseInt(jTextField_HongNgoc.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_KimCuong(){
+        try{
         return Integer.parseInt(jTextField_KimCuong.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_SLCayThuoc(){
+        try{
         return Integer.parseInt(jTextField_SLCayThuoc.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_SLChuyenXeBaoVe(){
+        try{
         return Integer.parseInt(jTextField_SLChuyenXeBaoVe.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public int Get_SLChuyenXeVanChuyen(){
+        try{
         return Integer.parseInt(jTextField_SLChuyenXeVanChuyen.getText());
+        }
+        catch(NumberFormatException e){
+        }
+        return -1;
     }
     public void Set_Jlabel_Test(String str){
         jLabel_Test.setText(str);

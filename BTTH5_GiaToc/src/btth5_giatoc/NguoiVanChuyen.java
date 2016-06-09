@@ -1,70 +1,57 @@
 package btth5_giatoc;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class NguoiVanChuyen extends GiaToc{
-    private int slChuyenXe = 0;
+    public NguoiVanChuyen() throws SoLuongException{
+            chungtoc = main.frame.Get_ChungToc();
+            nghenghiep =  main.frame.Get_NgheNghiep();
+    }
     
     @Override
-    public void Nhap()throws SoLoaiException{
-        super.Nhap();
-        chungtoc = "Nguoi";
-        nghenghiep = "Van Chuyen";
-        Scanner scan = new Scanner(System.in);
-        do{
-            System.out.print("Nhap so chuyen xe: ");
-            try{
-                slChuyenXe = Integer.parseInt(scan.nextLine());
-                if(slChuyenXe < 0){
-                    throw new SoLoaiException();
-                }
-            }
-            catch(NumberFormatException e){
-                System.out.println("So khong hop le !");
-            }
-            catch(SoLoaiException e){
-                System.out.println(e.getMessage());
-            }
-        }while(slChuyenXe < 0);
+    public void Nhap(){
     }
     @Override
     public void Xuat(){
-        TinhDiemCH();
-        TinhCuBet();
-        TinhTienThuong();
-        super.Xuat();
-        System.out.print("  |Chung toc: " + chungtoc + "  |Nghe nghiep: " + nghenghiep);
-        System.out.print("\nThanh qua lao dong: Van chuyen duoc " + slChuyenXe + " chuyen xe.");
-        System.out.print("\nCubet: " + cubet + ", Diem cong hien: " + diemconghien + ", Tien thuong: " + tienthuong + ", Thu nhap: " + tientongcong);
-        System.out.print("\n-------------------------------------------------------------------------\n");
     }
     
     @Override
-    public void Write() throws IOException{
-        TinhDiemCH();
-        TinhCuBet();
-        TinhTienThuong();
-        PrintWriter out = new PrintWriter(new BufferedWriter( new FileWriter("dsthanhvien.txt", true)));
-        out.print("  |Chung toc: " + chungtoc + "  |Nghe nghiep: " + nghenghiep);
-        out.print("\r\nCubet: " + cubet + ", Diem cong hien: " + diemconghien + ", Tien thuong: " + tienthuong + ", Thu nhap: " + tientongcong);
-        out.print("\r\n-------------------------------------------------------------------------\r\n");
-        out.close();
-        PrintWriter p = new PrintWriter(new BufferedWriter( new FileWriter("thanhqualaodong.txt", true)));
-        p.print("  MaTV: " + getMTV());
-        p.print("   Thanh qua lao dong: Van chuyen duoc " + slChuyenXe + " chuyen xe.");
-        p.print("\r\n--------------------------------------------------------------------------------------------\r\n");
-        p.close();
+    public void Write() throws SQLException, SoLuongException, IOException {
+        if(main.frame.Get_SLChuyenXeVanChuyen() < 0){
+            throw new SoLuongException("Số lượng chuyến xe không hợp lệ");
+        }
+        else{
+            if(MaTV_HopLe == true){
+                DocCSDL();
+                Connection conn = main.CreateConnection();
+                Statement sta = conn.createStatement();
+                //String sql = "INSERT INTO DSThanhVien VALUES('a', 'b', 'c', 'd', 'e', 'f', 1, 2, 3, 4)"; 
+                String sql = "INSERT INTO DSThanhVien VALUES(N'" + mathanhvien + "', N'" + hoten + "', N'" 
+                        + gioitinh + "', N'" + ngaysinh + "', N'" + chungtoc + "', N'" + nghenghiep + "', "
+                        + cubet + ", " + diemconghien + ", " + tienthuong + ", " + tientongcong + ")";
+                sta.executeUpdate(sql);
+                main.frame.Set_Jlabel_Test("Đã lưu thành công!");
+                GiaToc.DSmatv.add(mathanhvien);
+            }
+        }
     }
     @Override
     public void TinhDiemCH(){
-        diemconghien = slChuyenXe * 1;
+        diemconghien = main.frame.Get_SLChuyenXeVanChuyen() * 1;
     }
     @Override
     public void TinhCuBet(){
-        cubet = slChuyenXe * 1;
+        cubet = main.frame.Get_SLChuyenXeVanChuyen() * 1;
+    }
+    private void DocCSDL() throws FileNotFoundException, IOException, SQLException{
+        // Truy Van Du Lieu:
+        //Gan Du Lieu:
+        TinhCuBet();
+        TinhDiemCH();
+        TinhTienThuong();
     }
 }

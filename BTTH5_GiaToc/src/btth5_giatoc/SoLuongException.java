@@ -5,15 +5,17 @@
  */
 package btth5_giatoc;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Reus
  */
-public class SoLoaiException extends Exception{
-    public SoLoaiException(String msg){
-        super(msg);
+public class SoLuongException extends Exception{
+    public SoLuongException(String msg){
+        JOptionPane.showMessageDialog(null, msg, "Lỗi!!!", 2);
     }
-    public SoLoaiException(){
-        super("So khong hop le!");
+    public SoLuongException(){
+        //super();
     }
 }

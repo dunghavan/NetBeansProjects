@@ -1,20 +1,14 @@
 package btth5_giatoc;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import javax.swing.JButton;
 
 public class main {
     static GiaToc g;
     static NewJFrame frame = new NewJFrame();
-    public  static void main(String []args) throws SoLoaiException, IOException{
+    public  static void main(String []args) throws SoLuongException, IOException{
           frame.setLocation(400, 100);
           frame.setVisible(true);
           

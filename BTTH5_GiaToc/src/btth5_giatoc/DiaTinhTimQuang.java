@@ -22,7 +22,7 @@ public class DiaTinhTimQuang extends GiaToc{
     }
    @Override
     public void Write() throws SQLException, SoLuongException, IOException {
-        if(main.frame.Get_BichNgoc() < 0 || main.frame.Get_HongNgoc() < 0 || main.frame.Get_LamNgoc() < 0 || main.frame.Get_KimCuong() < 0){
+        if(main.frame.Get_BichNgoc() < 0 || main.frame.Get_LamNgoc() < 0 || main.frame.Get_HongNgoc() < 0 || main.frame.Get_KimCuong() < 0){
             throw new SoLuongException("Số lượng quặng không hợp lệ");
         }
         else{
@@ -35,6 +35,12 @@ public class DiaTinhTimQuang extends GiaToc{
                         + gioitinh + "', N'" + ngaysinh + "', N'" + chungtoc + "', N'" + nghenghiep + "', "
                         + cubet + ", " + diemconghien + ", " + tienthuong + ", " + tientongcong + ")";
                 sta.executeUpdate(sql);
+                //
+                String TQLD = "Bích Ngọc: " + main.frame.Get_BichNgoc() + ", Lam Ngọc: " + main.frame.Get_LamNgoc()
+                        + ", Hồng Ngọc: " + main.frame.Get_HongNgoc() + ", Kim Cương: " + main.frame.Get_KimCuong();
+                String sql2 = "INSERT INTO ThanhQuaLaoDong VALUES(N'" + mathanhvien + "', N'" + TQLD + "')";
+                sta.executeUpdate(sql2);
+                
                 main.frame.Set_Jlabel_Test("Đã lưu thành công!");
                 GiaToc.DSmatv.add(mathanhvien);
             }

@@ -35,6 +35,12 @@ public class LinhBaoAn extends GiaToc{
                         + gioitinh + "', N'" + ngaysinh + "', N'" + chungtoc + "', N'" + nghenghiep + "', "
                         + cubet + ", " + diemconghien + ", " + tienthuong + ", " + tientongcong + ")";
                 sta.executeUpdate(sql);
+                //
+                String TQLD = "Bảo vệ được: " + main.frame.Get_SLChuyenXeBaoVe() + " chuyến xe" + ", Giết được: " + main.frame.Get_Soi() + " sói, "
+                        + main.frame.Get_Gau() + " gấu, " + main.frame.Get_Ho() + " hổ";
+                String sql2 = "INSERT INTO ThanhQuaLaoDong VALUES(N'" + mathanhvien + "', N'" + TQLD + "')";
+                sta.executeUpdate(sql2);
+                
                 main.frame.Set_Jlabel_Test("Đã lưu thành công!");
                 GiaToc.DSmatv.add(mathanhvien);
             }
@@ -46,7 +52,7 @@ public class LinhBaoAn extends GiaToc{
     }
     @Override
     public void TinhCuBet(){
-        cubet = main.frame.Get_SLChuyenXeBaoVe() * 1 + main.frame.Get_Soi() * DCHSoi + main.frame.Get_Gau() * DCHGau + main.frame.Get_Ho() * DCHHo;;
+        cubet = main.frame.Get_SLChuyenXeBaoVe() * 1 + main.frame.Get_Soi() * DCHSoi + main.frame.Get_Gau() * DCHGau + main.frame.Get_Ho() * DCHHo;
     }
     private int giaSoi = 0, DCHSoi = 0;
     private int giaGau = 0,DCHGau = 0;

@@ -52,7 +52,7 @@ public abstract class GiaToc {
         gioitinh = main.frame.Get_JComboBox_GT();
         ngaysinh = main.frame.Get_JDateChooser();
         if(ngaysinh.equalsIgnoreCase(""))
-            throw new SoLuongException("Hãy nhập ngày sinh!");
+            throw new SoLuongException("Hãy chọn ngày sinh!");
     }
     private void CheckMTV() throws MaThanhVienException{
             for (String matv : DSmatv) {

@@ -5,12 +5,11 @@
  */
 package btth5_giatoc;
 
+import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.event.ItemEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -23,6 +22,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
+        JDateChooser_Option();
     }
 
     /**
@@ -95,6 +95,12 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_MaTV.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel_MaTV.setText("Mã Thành Viên:");
 
+        jTextField_MaTV.setName(""); // NOI18N
+        jTextField_MaTV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_MaTVMouseClicked(evt);
+            }
+        });
         jTextField_MaTV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_MaTVActionPerformed(evt);
@@ -104,10 +110,21 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_HoTen.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel_HoTen.setText("Họ Tên:");
 
+        jTextField_HoTen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoTenMouseClicked(evt);
+            }
+        });
+
         jLabel_GioiTinh.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel_GioiTinh.setText("Giới Tính:");
 
         jComboBox_GT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nam", "Nữ" }));
+        jComboBox_GT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox_GTMouseClicked(evt);
+            }
+        });
         jComboBox_GT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox_GTActionPerformed(evt);
@@ -115,6 +132,11 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jComboBox_ChungToc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tinh Linh", "Địa Tinh", "Người" }));
+        jComboBox_ChungToc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox_ChungTocMouseClicked(evt);
+            }
+        });
         jComboBox_ChungToc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox_ChungTocItemStateChanged(evt);
@@ -131,6 +153,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1.setText("Nghề Nghiệp:");
 
         jComboBox_NgheNghiep.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tìm Thuốc", "Trồng Thuốc" }));
+        jComboBox_NgheNghiep.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox_NgheNghiepMouseClicked(evt);
+            }
+        });
         jComboBox_NgheNghiep.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox_NgheNghiepItemStateChanged(evt);
@@ -145,9 +172,15 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_NgaySinh.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel_NgaySinh.setText("Ngày Sinh: ");
 
-        jDateChooser_NgaySinh.setBorder(new javax.swing.border.MatteBorder(null));
+        jDateChooser_NgaySinh.setBackground(new java.awt.Color(153, 153, 255));
+        jDateChooser_NgaySinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jDateChooser_NgaySinh.setDateFormatString("dd- MM-yyyy");
         jDateChooser_NgaySinh.setDoubleBuffered(false);
+        jDateChooser_NgaySinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDateChooser_NgaySinhMouseClicked(evt);
+            }
+        });
 
         jButton_Nhap.setText("Lưu Xuống CSDL");
         jButton_Nhap.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -161,27 +194,45 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel_Test.setText("jLabel2");
-
         jLabel_LinhChi.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_LinhChi.setText("Linh Chi:");
 
         jTextField_LinhChi.setForeground(new java.awt.Color(0, 0, 51));
+        jTextField_LinhChi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_HaThuO.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_HaThuO.setText("Hà Thủ Ô:");
 
         jTextField_HaThuO.setForeground(new java.awt.Color(0, 0, 51));
+        jTextField_HaThuO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_NhanSam.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_NhanSam.setText("Nhân Sâm:");
 
         jTextField_NhanSam.setForeground(new java.awt.Color(0, 0, 51));
+        jTextField_NhanSam.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_ThatTamLien.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_ThatTamLien.setText("Thất Tâm Liên:");
 
         jTextField_ThatTamLien.setForeground(new java.awt.Color(0, 0, 51));
+        jTextField_ThatTamLien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_BichNgoc.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_BichNgoc.setText("Bích Ngọc:");
@@ -189,6 +240,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTextField_BichNgoc.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_BichNgoc.setEnabled(false);
+        jTextField_BichNgoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_LamNgoc.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_LamNgoc.setText("Lam Ngọc:");
@@ -196,6 +252,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTextField_LamNgoc.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_LamNgoc.setEnabled(false);
+        jTextField_LamNgoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_HongNgoc.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_HongNgoc.setText("Hồng Ngọc:");
@@ -203,6 +264,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTextField_HongNgoc.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_HongNgoc.setEnabled(false);
+        jTextField_HongNgoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_KimCuong.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_KimCuong.setText("Kim Cương:");
@@ -210,6 +276,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTextField_KimCuong.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_KimCuong.setEnabled(false);
+        jTextField_KimCuong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
         jTextField_KimCuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_KimCuongActionPerformed(evt);
@@ -221,6 +292,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_SLCayThuoc.setEnabled(false);
 
         jTextField_SLCayThuoc.setEnabled(false);
+        jTextField_SLCayThuoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_AoGiap.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_AoGiap.setText("Áo Giáp:");
@@ -228,6 +304,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTextField_AoGiap.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_AoGiap.setEnabled(false);
+        jTextField_AoGiap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_DungCuSX.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_DungCuSX.setText("Dụng Cụ SX:");
@@ -235,9 +316,19 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTextField_DungCuSX.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_DungCuSX.setEnabled(false);
+        jTextField_DungCuSX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jTextField_VuKhi.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_VuKhi.setEnabled(false);
+        jTextField_VuKhi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_VuKhi.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_VuKhi.setText("Vũ Khí:");
@@ -249,9 +340,19 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTextField_Ho.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_Ho.setEnabled(false);
+        jTextField_Ho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jTextField_Soi.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_Soi.setEnabled(false);
+        jTextField_Soi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_Soi.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_Soi.setText("Chó Sói:");
@@ -259,6 +360,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTextField_Gau.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_Gau.setEnabled(false);
+        jTextField_Gau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel_Gau.setForeground(new java.awt.Color(255, 0, 51));
         jLabel_Gau.setText("Gấu:");
@@ -270,6 +376,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTextField_SLChuyenXeBaoVe.setForeground(new java.awt.Color(51, 0, 51));
         jTextField_SLChuyenXeBaoVe.setEnabled(false);
+        jTextField_SLChuyenXeBaoVe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 255));
@@ -280,6 +391,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_SLChuyenXeVanChuyen.setEnabled(false);
 
         jTextField_SLChuyenXeVanChuyen.setEnabled(false);
+        jTextField_SLChuyenXeVanChuyen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_HoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -288,45 +404,6 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_MaTV)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField_MaTV)))
-                        .addGap(177, 177, 177)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_HongNgoc)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_HongNgoc, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel_AoGiap)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel_Soi)
-                                        .addGap(20, 20, 20)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField_AoGiap, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField_Soi, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_KimCuong)
-                                .addGap(26, 26, 26)
-                                .addComponent(jTextField_KimCuong, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_Gau)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField_Gau, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabel_Ho)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField_Ho, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(31, 31, 31))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -384,13 +461,47 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel_ChungToc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBox_ChungToc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2)
+                            .addComponent(jLabel2))
+                        .addGap(0, 423, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(272, 272, 272)
-                                .addComponent(jButton_Nhap, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel_Test)))
-                        .addGap(0, 307, Short.MAX_VALUE))
+                                .addComponent(jLabel_MaTV)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_MaTV)))
+                        .addGap(177, 177, 177)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel_HongNgoc)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_HongNgoc, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel_AoGiap)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel_Soi)
+                                        .addGap(20, 20, 20)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField_AoGiap, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_Soi, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel_KimCuong)
+                                .addGap(26, 26, 26)
+                                .addComponent(jTextField_KimCuong, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel_Gau)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_Gau, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel_Ho)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_Ho, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(31, 31, 31))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -415,8 +526,13 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addGap(173, 173, 173)
                                 .addComponent(jLabel_HaThuO)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_HaThuO, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jTextField_HaThuO, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(272, 272, 272)
+                                .addComponent(jButton_Nhap, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(jLabel_Test, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(108, 108, 108))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -491,43 +607,20 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jTextField_Gau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_SLChuyenXeBaoVe)
                     .addComponent(jTextField_SLChuyenXeBaoVe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jButton_Nhap)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_Test))))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton_Nhap, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_Test, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
+
+        jLabel_Test.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField_MaTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_MaTVActionPerformed
-        // TODO add your handling code here:
-        jTextField_MaTV.getDocument().addDocumentListener(new DocumentListener(){
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                jLabel_Test.setText("...");
-                System.out.println("Dang sua...");
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                jLabel_Test.setText("...");
-                System.out.println("Dang sua...");
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                jLabel_Test.setText("...");
-                System.out.println("Dang sua...");
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
+        // TODO add your handling code here:Get_LamNgoc()
     }//GEN-LAST:event_jTextField_MaTVActionPerformed
 
     private void jComboBox_GTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_GTActionPerformed
@@ -685,6 +778,34 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_KimCuongActionPerformed
 
+    private void jTextField_MaTVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField_MaTVMouseClicked
+        Set_NULL();
+    }//GEN-LAST:event_jTextField_MaTVMouseClicked
+
+    private void jTextField_HoTenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField_HoTenMouseClicked
+        Set_NULL();
+    }//GEN-LAST:event_jTextField_HoTenMouseClicked
+
+    private void jDateChooser_NgaySinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser_NgaySinhMouseClicked
+        Set_NULL();
+    }//GEN-LAST:event_jDateChooser_NgaySinhMouseClicked
+
+    private void jComboBox_GTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox_GTMouseClicked
+        Set_NULL();
+    }//GEN-LAST:event_jComboBox_GTMouseClicked
+
+    private void jComboBox_ChungTocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox_ChungTocMouseClicked
+        Set_NULL();
+    }//GEN-LAST:event_jComboBox_ChungTocMouseClicked
+
+    private void jComboBox_NgheNghiepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox_NgheNghiepMouseClicked
+        Set_NULL();
+    }//GEN-LAST:event_jComboBox_NgheNghiepMouseClicked
+
+    private void jTextField_HoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField_HoMouseClicked
+        Set_NULL();
+    }//GEN-LAST:event_jTextField_HoMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Nhap;
@@ -741,6 +862,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_VuKhi;
     // End of variables declaration//GEN-END:variables
     private GiaToc g;
+    void Set_NULL(){
+        jLabel_Test.setText("");
+    }
+    final void JDateChooser_Option(){
+        JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateChooser_NgaySinh.getDateEditor();
+        editor.setEditable(false);
+    }
     public String Get_JTextField_MaTV(){
         if(jTextField_MaTV.getText().isEmpty())
             return "";
@@ -912,25 +1040,36 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_NhanSam.setEnabled(false);
         jLabel_ThatTamLien.setEnabled(false);
         jTextField_LinhChi.setEnabled(false);
+        jTextField_LinhChi.setText(null);
         jTextField_HaThuO.setEnabled(false);
+        jTextField_HaThuO.setText(null);
         jTextField_NhanSam.setEnabled(false);
+        jTextField_NhanSam.setText(null);
         jTextField_ThatTamLien.setEnabled(false);
+        jTextField_ThatTamLien.setText(null);
         //
         jLabel_BichNgoc.setEnabled(false);
         jLabel_LamNgoc.setEnabled(false);
         jLabel_HongNgoc.setEnabled(false);
         jLabel_KimCuong.setEnabled(false);
         jTextField_BichNgoc.setEnabled(false);
+        jTextField_BichNgoc.setText(null);
         jTextField_LamNgoc.setEnabled(false);
+        jTextField_LamNgoc.setText(null);
         jTextField_HongNgoc.setEnabled(false);
+        jTextField_HongNgoc.setText(null);
         jTextField_KimCuong.setEnabled(false);
+        jTextField_KimCuong.setText(null);
         //
         jLabel_DungCuSX.setEnabled(false);
         jLabel_VuKhi.setEnabled(false);
         jLabel_AoGiap.setEnabled(false);
         jTextField_DungCuSX.setEnabled(false);
+        jTextField_DungCuSX.setText(null);
         jTextField_VuKhi.setEnabled(false);
+        jTextField_VuKhi.setText(null);
         jTextField_AoGiap.setEnabled(false);
+        jTextField_AoGiap.setText(null);
         //
         jLabel_SLChuyenXeBaoVe.setEnabled(false);
         jTextField_SLChuyenXeBaoVe.setEnabled(false);
@@ -938,13 +1077,18 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel_Gau.setEnabled(false);
         jLabel_Ho.setEnabled(false);
         jTextField_Soi.setEnabled(false);
+        jTextField_Soi.setText(null);
         jTextField_Gau.setEnabled(false);
+        jTextField_Gau.setText(null);
         jTextField_Ho.setEnabled(false);
+        jTextField_Ho.setText(null);
         //
         jLabel_SLCayThuoc.setEnabled(false);
         jTextField_SLCayThuoc.setEnabled(false);
+        jTextField_SLCayThuoc.setText(null);
         //
         jLabel_SLChuyenXeVanChuyen.setEnabled(false);
         jTextField_SLChuyenXeVanChuyen.setEnabled(false);
+        jTextField_SLChuyenXeVanChuyen.setText(null);
     }
     }

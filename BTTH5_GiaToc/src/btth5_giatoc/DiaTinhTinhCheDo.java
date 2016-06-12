@@ -38,6 +38,12 @@ public class DiaTinhTinhCheDo extends GiaToc{
                         + gioitinh + "', N'" + ngaysinh + "', N'" + chungtoc + "', N'" + nghenghiep + "', "
                         + cubet + ", " + diemconghien + ", " + tienthuong + ", " + tientongcong + ")";
                 sta.executeUpdate(sql);
+                //
+                String TQLD = "Công Cụ SX: " + main.frame.Get_CongCuSX() + ", Vũ Khí: " + main.frame.Get_VuKhi()
+                        + ", Áo Giáp: " + main.frame.Get_AoGiap();
+                String sql2 = "INSERT INTO ThanhQuaLaoDong VALUES(N'" + mathanhvien + "', N'" + TQLD + "')";
+                sta.executeUpdate(sql2);
+                
                 main.frame.Set_Jlabel_Test("Đã lưu thành công!");
                 GiaToc.DSmatv.add(mathanhvien);
             }

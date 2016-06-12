@@ -34,6 +34,11 @@ public class NguoiVanChuyen extends GiaToc{
                         + gioitinh + "', N'" + ngaysinh + "', N'" + chungtoc + "', N'" + nghenghiep + "', "
                         + cubet + ", " + diemconghien + ", " + tienthuong + ", " + tientongcong + ")";
                 sta.executeUpdate(sql);
+                //
+                String TQLD = "Vận chuyển được: " + main.frame.Get_SLChuyenXeVanChuyen() + " chuyến xe";
+                String sql2 = "INSERT INTO ThanhQuaLaoDong VALUES(N'" + mathanhvien + "', N'" + TQLD + "')";
+                sta.executeUpdate(sql2);
+                
                 main.frame.Set_Jlabel_Test("Đã lưu thành công!");
                 GiaToc.DSmatv.add(mathanhvien);
             }
